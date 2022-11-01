@@ -1,0 +1,16 @@
+{% extends '_partials/base.html' %}
+{% block content %}
+<body>
+    
+    <h1>edit feedback</h1>
+    {% include '_partials/messages.html' %}
+    <form class="ui form" method="POST" action= {% url 'edit_history' history.id %}>
+        {% csrf_token %}
+        {{form.as_p}}
+    
+        <input type="submit" class="ui button primary"value="save">
+
+    </form>
+
+</body>
+{% endblock %}

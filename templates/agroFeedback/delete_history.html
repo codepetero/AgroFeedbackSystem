@@ -1,0 +1,17 @@
+{% extends '_partials/base.html' %}
+{% load static %}
+{% block content %}
+
+
+<h1 class="ui header">Delete history</h1>
+{% include '_partials/messages.html' %}
+
+    <form method="POST" action={% url 'delete_history' history.id %} class="ui form">
+        {% csrf_token %}
+        <p>Are you sure you want to delete the feedback</p>
+
+        <input type="submit" class="ui button negative" value="YES">
+        <a href={% url 'history' history.id %}>cancel</a>
+
+    </form>
+    {% endblock %}

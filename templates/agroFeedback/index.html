@@ -1,0 +1,73 @@
+{% extends '_partials/base.html' %}
+{% load static %}
+{% block content %}
+<html>
+    <head>
+        <style>
+          thead { padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04aa23;
+             color: rgb(255, 255, 255);
+         }
+         tr:hover {background-color: #ddd;}
+         th{background-color: #04aa23;}
+        </style>
+    </head>
+</html>
+<body>
+    
+    <h1 class="ui header">feedback list</h1>
+
+    {% include '_partials/messages.html' %}
+
+    {% if feedbacks %}
+    <table class="ui table">
+
+        <thead>
+
+            <tr>
+                <th>id</th>
+                <th>feedback_message</th>
+                <th>sacco_name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for Feedback in feedbacks %}
+            <tr>
+                <td>{{Feedback.id}}</td>
+                <td>{{Feedback.feedback_message}}</td>
+                <td>{{Feedback.sacco_name}}</td>
+                <td>
+                
+                <a href={% url 'history' Feedback.pk %} class="ui classes">
+                    <i class="eye icon"></i>
+                <a href={% url 'edit_history' Feedback.pk %} class="ui classes">
+                    <i class="pencil icon"></i>
+                </a>
+
+                </a>
+                </td>
+            </tr>
+
+            
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+    {% else %}
+    <div class="ui message">
+        <div class="header">
+            No feedback yet
+        </div>
+        <p>You can create your feedback now<a href={% url 'create_feedback' %}>create now</a></p>
+
+    </div>
+
+    {% endif%}
+
+</body>
+{% endblock %}

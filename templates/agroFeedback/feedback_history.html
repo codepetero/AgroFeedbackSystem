@@ -1,0 +1,24 @@
+{% extends '_partials/base.html' %}
+{% load static %}
+{% block content %}
+<h1 class="ui header">Farmers History</h1>
+    
+    {% include '_partials/messages.html' %}
+
+    <div class="ui table">
+        <tr>
+            <td>{{Feedback.id}}</td>
+            <td>{{Feedback.feedback_message}}</td>
+            <td>{{Feedback.sacco_name}}</td>
+            <td>
+        </td>
+        </div>
+        <div class="extra content">
+
+            <a href={% url 'edit_history' history.id %} class="ui button primary">Edit</a>
+            <a href={% url 'delete_history' history.id %} class="ui button red">delete</a>
+        </div>
+    </div>
+    
+
+{% endblock %}
